@@ -1,6 +1,7 @@
-const express = require('express');
-const logger = require('morgan');
-const bunyan = require('bunyan');
+const express  = require('express');
+const logger   = require('morgan');
+const bunyan   = require('bunyan');
+const sessions = require('client-sessions');
 
 const app = express();
 const log = bunyan.createLogger({name: 'express-template'});
@@ -15,9 +16,30 @@ app.use(logger(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:htt
   stream: loggerStream
 }));
 
-app.get('/', (req, res) =>
-  res.send('Hello World!')
-);
+// 2 hour encrypted session
+app.use(sessions({
+  cookieName: 'session',
+  secret: 'foobar', // Change this
+  duration: 2 * 60 * 60 * 1000
+}));
+
+app.get('/api/login', (req, res) => {
+  req.session.username = 'Matti';
+  res.redirect('/');
+});
+
+app.get('/api/logout', (req, res) => {
+  req.session.reset();
+  res.redirect('/');
+});
+
+app.get('/', (req, res) => {
+  if (req.session.username) {
+    res.send('Hello ' + req.session.username + '<br/><a href="/api/logout">logout</a>')
+  } else {
+    res.send('<a href="/api/login">login</a>')
+  }
+});
 
 const server = app.listen(3000, () => {
   const host = server.address().address;

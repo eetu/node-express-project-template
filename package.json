@@ -1,18 +1,19 @@
 {
-  "name": "express-template",
+  "name": "node-express-project-template",
   "version": "1.0.0",
-  "description": "",
+  "description": "simple node express template with logging and client session support",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "start-dev": "nodemon index.js | bunyan",
     "test": ""
   },
-  "author": "",
-  "license": "",
+  "author": "eetu.sutinen@gmail.com",
+  "license": "MIT",
   "dependencies": {
     "babel-register": "^6.3.13",
     "bunyan": "^1.5.1",
+    "client-sessions": "^0.7.0",
     "express": "^4.13.3",
     "morgan": "^1.6.1"
   },
