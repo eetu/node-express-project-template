@@ -1,0 +1,10 @@
+{
+  "verbose": false,
+  "watch": [
+    "src/"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js json es es6"
+}

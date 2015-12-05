@@ -1,0 +1,22 @@
+{
+  "name": "express-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start-dev": "nodemon index.js | bunyan",
+    "test": ""
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "babel-register": "^6.3.13",
+    "bunyan": "^1.5.1",
+    "express": "^4.13.3",
+    "morgan": "^1.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.8.1"
+  }
+}
