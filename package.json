@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "start-dev": "nodemon index.js | bunyan",
-    "test": ""
+    "test": "NODE_ENV='test' mocha --compilers js:babel-register"
   },
   "author": "eetu.sutinen@gmail.com",
   "license": "MIT",
@@ -18,6 +18,10 @@
     "morgan": "^1.6.1"
   },
   "devDependencies": {
-    "nodemon": "^1.8.1"
+    "babel-core": "^6.3.13",
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "nodemon": "^1.8.1",
+    "supertest": "^1.1.0"
   }
 }
