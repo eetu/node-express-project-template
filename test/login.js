@@ -5,10 +5,23 @@ const should  = require('chai').should();
 describe('session', () => {
   it('login should create session', (done) => {
     request(app)
-      .get('/api/login')
+      .post('/api/login')
+      .send({username: 'Matti',
+             password: 'salasana1'})
       .expect((res) => {
         res.headers['set-cookie'].should.match(/session=/);
       })
-      .expect(302, done);
+      .expect(201, done);
+  })
+
+  it('login should create session', (done) => {
+    request(app)
+      .post('/api/login')
+      .send({username: 'incorrect',
+             password: 'incorrect'})
+      .expect((res) => {
+        res.headers.should.not.have.property('set-cookie');
+      })
+      .expect(401, done);
   })
 })
