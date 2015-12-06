@@ -14,7 +14,7 @@ describe('session', () => {
       .expect(201, done);
   })
 
-  it('login should create session', (done) => {
+  it('login should fail wih incorrect username/password', (done) => {
     request(app)
       .post('/api/login')
       .send({username: 'incorrect',
