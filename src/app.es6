@@ -40,7 +40,7 @@ createApp = () => {
   passport.use(new LocalStrategy((username, password, done) => {
     if (username !== 'Matti' || password !== 'salasana1') {
       log.warn('login failed')
-      done(null, false, { message: 'Incorrect username' });
+      done(null, false, { message: 'Incorrect username or password.' });
     } else {
       done(null, {username: 'Matti', age: '48'});
     }
